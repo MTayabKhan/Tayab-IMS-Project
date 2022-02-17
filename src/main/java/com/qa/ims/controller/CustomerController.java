@@ -38,9 +38,7 @@ public class CustomerController implements CrudController<Customer> {
 		return customers;
 	}
 
-	/**
-	 * Creates a customer by taking in user input
-	 */
+
 	@Override
 	public Customer create() {
 		LOGGER.info("Please enter a first name");
