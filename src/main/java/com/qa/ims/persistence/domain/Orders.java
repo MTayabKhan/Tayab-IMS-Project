@@ -7,39 +7,57 @@ import java.util.Objects;
 public class Orders {
 	private Long id;
 	private Long CustomerID;
+	private Long Order_itemsID;
 	private List<Item> ItemList = new ArrayList<>();
-	
-	
-	public Orders(Long id, Long CustomerID) {
-		this.setId(id);
-		this.setCustomerID(CustomerID);
-		
+	private Double Items_value;
+
+	public Double getItems_value() {
+		return Items_value;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Orders [id=" + id + ", CustomerID=" + CustomerID + ", ItemList=" + ItemList + ", Order_itemsID="
+				+ Order_itemsID + ", Items_value=" + Items_value + "]";
+	}
+
+	public void setItems_value(Double items_value) {
+		Items_value = items_value;
+	}
+
+	public Orders(Long customerID, Long order_itemsID) {
+		super();
+		CustomerID = customerID;
+		Order_itemsID = order_itemsID;
+	}
+
+	public Long getOrder_itemsID() {
+		return Order_itemsID;
+	}
+
+	public Orders(Long id, Long customerID, Long order_itemsID) {
+		super();
+		this.id = id;
+		CustomerID = customerID;
+		Order_itemsID = order_itemsID;
+	}
+
+	public void setOrder_itemsID(Long order_itemsID) {
+		Order_itemsID = order_itemsID;
+	}
+
 	public Orders(Long id, Long CustomerID, List<Item> ItemList) {
 		this.setId(id);
 		this.setCustomerID(CustomerID);
 		this.setItemList(ItemList);
 	}
-	
-	public List<Item> addItemList(Long i, String a, Double b){
-		Item Item = new Item(i, a, b);
-		ItemList.add(Item);
-		return ItemList;
-	}
-	
-	public List<Item> removeItemList(Long i, String a, Double b){
-		Item Item = new Item(i, a, b);
-		ItemList.remove(Item);
-		return ItemList;
-	}
-	
+
 	public List<Item> getItemList() {
 		return ItemList;
 	}
 
 	public void setItemList(List<Item> itemList) {
-		ItemList = itemList;
+		this.ItemList = itemList;
 	}
 
 	public Long getId() {
@@ -55,12 +73,12 @@ public class Orders {
 	}
 
 	public void setCustomerID(Long customerID) {
-		CustomerID = customerID;
+		this.CustomerID = customerID;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(CustomerID, id);
+		return Objects.hash(CustomerID, ItemList, Items_value, Order_itemsID, id);
 	}
 
 	@Override
@@ -72,12 +90,8 @@ public class Orders {
 		if (getClass() != obj.getClass())
 			return false;
 		Orders other = (Orders) obj;
-		return Objects.equals(CustomerID, other.CustomerID) && Objects.equals(id, other.id);
+		return Objects.equals(CustomerID, other.CustomerID) && Objects.equals(ItemList, other.ItemList)
+				&& Objects.equals(Items_value, other.Items_value) && Objects.equals(Order_itemsID, other.Order_itemsID)
+				&& Objects.equals(id, other.id);
 	}
-
-	@Override
-	public String toString() {
-		return "Order [id=" + id + ", CustomerID=" + CustomerID + "]";
-	}
-
 }

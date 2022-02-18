@@ -5,7 +5,7 @@
 -- PRIMARY KEY (id)
 -- );
 
--- CREATE TABLE Items (
+-- CREATE TABLE Item (
 -- id int auto_increment,
 -- name VARCHAR (255) NOT NULL,
 -- value int (255) NOT NULL,
@@ -24,11 +24,10 @@
 -- itemID int (255) NOT NULL,
 -- OrdersID int (255) NOT NULL,
 -- PRIMARY KEY (id),
--- FOREIGN key(itemID) references Items(id),
+-- FOREIGN key(itemID) references Item(id),
 -- foreign key(OrdersID) references Orders(id)
 
 -- );
+-- UPDATE orders SET CustomerID = 2, Order_itemsID = 6 WHERE id = 3;
+-- select * from orders;
 
--- ALTER TABLE orders
--- ADD COLumn Order_itemsID INT (255) NOT NULL AFTER CustomerID;
-select * from orders;
