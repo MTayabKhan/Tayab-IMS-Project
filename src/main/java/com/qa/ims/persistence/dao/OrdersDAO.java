@@ -11,8 +11,8 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-
 import com.qa.ims.persistence.domain.Orders;
+
 import com.qa.ims.utils.DBUtils;
 
 public class OrdersDAO implements Dao<Orders> {
@@ -22,7 +22,12 @@ public class OrdersDAO implements Dao<Orders> {
 	public List<Orders> readAll() {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders");) {
+				ResultSet resultSet = statement.executeQuery("Select o.id, o.CustomerID, o.order_itemsID, c.firstName, c.surName, i.name, i.value from (((orders o \r\n"
+						+ "JOIN customer c on o.CustomerID=c.id)\r\n"
+						+ "Join order_items oi on o.order_itemsID=oi.id)\r\n"
+						+ "join item i on oi.itemID=i.id)\r\n"
+						+ "Group by o.id\r\n"
+						+ "order by o.id;");) {
 			List<Orders> order = new ArrayList<>();
 			while (resultSet.next()) {
 				order.add(modelFromResultSet(resultSet));
@@ -110,7 +115,7 @@ public class OrdersDAO implements Dao<Orders> {
 	public Orders readLatest() {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders ORDER BY id DESC LIMIT 1");) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders ORDER BY id DESC");) {
 			resultSet.next();
 			return modelFromResultSet(resultSet);
 		} catch (Exception e) {
