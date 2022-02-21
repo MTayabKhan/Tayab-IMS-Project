@@ -8,10 +8,7 @@ public class Orders {
 	private Long id;
 	private Long CustomerID;
 	private Long Order_itemsID;
-	private String firstName;
-	private String itemName;
-	private Long sum;
-
+	
 
 	public Orders(Long customerID, Long order_itemsID) {
 		super();
@@ -31,13 +28,7 @@ public class Orders {
 	}
 
 
-	public Orders(Long id, String firstName, String itemName, Long sum) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.itemName = itemName;
-		this.sum = sum;
-	}
+
 
 
 	

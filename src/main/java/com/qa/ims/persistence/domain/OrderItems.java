@@ -48,15 +48,6 @@ public class OrderItems {
 		OrdersID = ordersID;
 	}
 
-		// TODO Auto-generated constructor stub
-	
-//	public OrderItems(Long itemID2, Long ordersID2) {
-//		super();
-//		this.itemID = itemID2;
-//		this.OrdersID = ordersID2;
-//		
-//	}
-	
 	
 	
 	@Override
