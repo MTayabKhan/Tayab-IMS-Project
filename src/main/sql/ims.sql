@@ -36,10 +36,10 @@
 -- select * from item;
 -- Insert into order_items (id, itemID, OrdersID) values (5, 5, 1);
 -- select * from order_items;
-Select o.id, c.firstName, c.surName, i.name, i.value from (((orders o 
-JOIN customer c on o.CustomerID=c.id)
-Join order_items oi on o.order_itemsID=oi.id)
-join item i on oi.itemID=i.id)
+-- Select o.id, o.CustomerID, c.firstName, c.surName, i.name, i.value from (((orders o 
+-- JOIN customer c on o.CustomerID=c.id)
+-- Join order_items oi on o.order_itemsID=oi.id)
+-- join item i on oi.itemID=i.id)
 Group by o.id
 order by o.id;
 

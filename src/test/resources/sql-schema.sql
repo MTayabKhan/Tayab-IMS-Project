@@ -1,7 +1,8 @@
 DROP TABLE IF EXISTS `order_items`;
-DROP TABLE IF EXISTS `Orders`;
-DROP TABLE IF EXISTS `customer`;
+DROP TABLE IF EXISTS `orders`;
 DROP TABLE IF EXISTS `Item`;
+DROP TABLE IF EXISTS `Customer`;
+
 
 
 
