@@ -1,0 +1,1 @@
+Select o.Id, c.firstName, i.name, SUM(i.value) FROM ((( orders o JOIN customer c on o.CustomerID=c.id) JOIN order_items oi on o.order_itemsID=oi.id) JOIN item i on oi.itemID=i.id)

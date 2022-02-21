@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
+
 import org.junit.Test;
 
 import com.qa.ims.persistence.domain.Customer;
@@ -55,5 +56,6 @@ public class CustomerDAOTest {
 	@Test
 	public void testDelete() {
 		assertEquals(1, DAO.delete(1));
+	
 	}
 }

@@ -13,6 +13,7 @@ import com.qa.ims.utils.Utils;
  * Takes in customer details for CRUD functionality
  *
  */
+
 public class CustomerController implements CrudController<Customer> {
 
 	public static final Logger LOGGER = LogManager.getLogger();
@@ -38,9 +39,7 @@ public class CustomerController implements CrudController<Customer> {
 		return customers;
 	}
 
-	/**
-	 * Creates a customer by taking in user input
-	 */
+
 	@Override
 	public Customer create() {
 		LOGGER.info("Please enter a first name");

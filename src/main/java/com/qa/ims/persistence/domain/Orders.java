@@ -1,46 +1,55 @@
 package com.qa.ims.persistence.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+
+
 import java.util.Objects;
 
 public class Orders {
 	private Long id;
 	private Long CustomerID;
-	private List<Item> ItemList = new ArrayList<>();
-	
-	
-	public Orders(Long id, Long CustomerID) {
-		this.setId(id);
-		this.setCustomerID(CustomerID);
-		
-	}
-	
-	public Orders(Long id, Long CustomerID, List<Item> ItemList) {
-		this.setId(id);
-		this.setCustomerID(CustomerID);
-		this.setItemList(ItemList);
-	}
-	
-	public List<Item> addItemList(Long i, String a, Double b){
-		Item Item = new Item(i, a, b);
-		ItemList.add(Item);
-		return ItemList;
-	}
-	
-	public List<Item> removeItemList(Long i, String a, Double b){
-		Item Item = new Item(i, a, b);
-		ItemList.remove(Item);
-		return ItemList;
-	}
-	
-	public List<Item> getItemList() {
-		return ItemList;
+	private Long Order_itemsID;
+	private String firstName;
+	private String itemName;
+	private Long sum;
+
+
+	public Orders(Long customerID, Long order_itemsID) {
+		super();
+		CustomerID = customerID;
+		Order_itemsID = order_itemsID;
 	}
 
-	public void setItemList(List<Item> itemList) {
-		ItemList = itemList;
+	public Long getOrder_itemsID() {
+		return Order_itemsID;
 	}
+
+	public Orders(Long id, Long customerID, Long order_itemsID) {
+		super();
+		this.id = id;
+		CustomerID = customerID;
+		Order_itemsID = order_itemsID;
+	}
+
+
+	public Orders(Long id, String firstName, String itemName, Long sum) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.itemName = itemName;
+		this.sum = sum;
+	}
+
+
+	
+
+	public void setOrder_itemsID(Long order_itemsID) {
+		Order_itemsID = order_itemsID;
+	}
+
+
+	
+
+
 
 	public Long getId() {
 		return id;
@@ -55,12 +64,12 @@ public class Orders {
 	}
 
 	public void setCustomerID(Long customerID) {
-		CustomerID = customerID;
-	}
+		this.CustomerID = customerID;
+	} 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(CustomerID, id);
+		return Objects.hash(CustomerID, Order_itemsID, id);
 	}
 
 	@Override
@@ -72,12 +81,15 @@ public class Orders {
 		if (getClass() != obj.getClass())
 			return false;
 		Orders other = (Orders) obj;
-		return Objects.equals(CustomerID, other.CustomerID) && Objects.equals(id, other.id);
+		return Objects.equals(CustomerID, other.CustomerID) && Objects.equals(Order_itemsID, other.Order_itemsID)
+				&& Objects.equals(id, other.id);
 	}
 
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", CustomerID=" + CustomerID + "]";
+		return "Orders [id=" + id + ", CustomerID =" + CustomerID + ", Order_itemsID =" + Order_itemsID + "]";
 	}
-
+	
 }
+
+
