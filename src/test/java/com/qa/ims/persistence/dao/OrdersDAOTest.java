@@ -31,12 +31,11 @@ public class OrdersDAOTest {
 	public void testReadAll() {
 		List<Orders> expected = new ArrayList<>();
 		expected.add(new Orders(1L, 1L, 1L));
-		expected.add(new Orders(2L, 2L, 2L));
 		assertEquals(expected, DAO.readAll());}
 
 	@Test
 	public void testReadLatest() {
-		assertEquals(new Orders(2L, 2L, 2L), DAO.readLatest());
+		assertEquals(new Orders(1L, 1L, 1L), DAO.readLatest());
 	}
 
 	@Test

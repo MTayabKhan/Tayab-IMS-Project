@@ -22,12 +22,7 @@ public class OrdersDAO implements Dao<Orders> {
 	public List<Orders> readAll() {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("Select o.id, o.CustomerID, o.order_itemsID, c.firstName, c.surName, i.name, i.value from (((orders o \r\n"
-						+ "JOIN customer c on o.CustomerID=c.id)\r\n"
-						+ "Join order_items oi on o.order_itemsID=oi.id)\r\n"
-						+ "join item i on oi.itemID=i.id)\r\n"
-						+ "Group by o.id\r\n"
-						+ "order by o.id;");) {
+				ResultSet resultSet = statement.executeQuery("Select * from orders");) {
 			List<Orders> order = new ArrayList<>();
 			while (resultSet.next()) {
 				order.add(modelFromResultSet(resultSet));
