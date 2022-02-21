@@ -36,9 +36,9 @@ public class OrdersController implements CrudController<Orders> {
 		Long customerID = utils.getLong();
 		LOGGER.info("Please enter the Order_ItemsID of the product");
 		Long Order_itemsID = utils.getLong();
-		Orders ordersTest = ordersDAO.create(new Orders(customerID, Order_itemsID));
+		Orders orders = ordersDAO.create(new Orders(customerID, Order_itemsID));
 		LOGGER.info("Order created");
-		return ordersTest;
+		return orders;
 	}
 
 	@Override
