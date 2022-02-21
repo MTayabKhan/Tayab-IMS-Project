@@ -1,4 +1,4 @@
-Coverage: 34%
+Coverage: 77.7%
 # Project Title
 
 One Paragraph of project description goes here
@@ -11,54 +11,74 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-```
-Give examples
-```
+ Java (1.8 or Higher)
+ Maven (3.8.4 or Higher)
 
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running
 
-Say what the step will be
+JAVA
 
-```
-Give the example
-```
+Watch this video to install Java JDK on your lovely PC
+https://www.youtube.com/watch?v=DTZAz9rj0kU
 
-And repeat
+MAVEN
 
-```
-until finished
-```
+This video is helpful to install Maven
+https://www.youtube.com/watch?v=RfCWg5ay5B0
 
+ECLIPSE
+To work with all of this you must install eclipse
+https://www.youtube.com/watch?v=N-wXTRpR03U
+
+
+After installing this go follow these steps.
+(Window -> Preferences -> Java -> Installed JRE) Make sure your local JDK is selected not the one that comes with eclipse
 End with an example of getting some data out of the system or using it for a little demo
+(Project -> Properties -> Java Compiler) Make sure the Java Compliance box is ticked otherwise all your tests fail.
 
 ## Running the tests
 
-Explain how to run the automated tests for this system. Break down into which tests and what they do
-
 ### Unit Tests 
 
-Explain what these tests test, why and how to run them
+Unit tests make sure your normal classes function when you use getID etc.
 
-```
-Give an example
-```
+public class OrdersTest {
+	@Test
+	public void testEquals() {
+		EqualsVerifier.simple().forClass(Orders.class).verify();
+	}
+
+}
+
 
 ### Integration Tests 
-Explain what these tests test, why and how to run them
+Integration tests make sure that your data is used effectively in your Java system. We also use @test and test every method individually
 
-```
-Give an example
-```
+	@Test
+	public void testCreate() {
+		final Orders created = new Orders(2L, 7L, 3L);
+		assertEquals(created, DAO.create(created));
+	}
 
 ### And coding style tests
 
-Explain what these tests test and why
+This finally makes sure that the code shows the right stuff when you push it in.
+	@Test
+	public void testCreate() {
+		final Long CustomerID = 2L, Order_ItemsID = 4L;
+		final Orders created = new Orders(CustomerID, Order_ItemsID);
 
-```
-Give an example
-```
+		Mockito.when(utils.getLong()).thenReturn(CustomerID, Order_ItemsID);
+		Mockito.when(dao.create(created)).thenReturn(created);
+
+		assertEquals(created, controller.create());
+
+		Mockito.verify(utils, Mockito.times(2)).getLong();
+		Mockito.verify(dao, Mockito.times(1)).create(created);
+	}
+
 
 ## Deployment
 
@@ -73,7 +93,7 @@ Add additional notes about how to deploy this on a live system
 We use [SemVer](http://semver.org/) for versioning.
 
 ## Authors
-
+* **Tayab Khan** = *Rest of the project* - [TayabKhan](https://github.com/TayabKhan420)
 * **Chris Perrins** - *Initial work* - [christophperrins](https://github.com/christophperrins)
 
 ## License
@@ -83,7 +103,11 @@ This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md
 *For help in [Choosing a license](https://choosealicense.com/)*
 
 ## Acknowledgments
-
+* Euan Black
+* Adil
+* Jamie
+* Hassan
+* John
 * Hat tip to anyone whose code was used
 * Inspiration
 * etc
