@@ -27,7 +27,6 @@ id int auto_increment,
 CustomerID int (255) NOT NULL,
 Order_itemsID int (255) NOT NULL,
 PRIMARY KEY (id)
-
 );
 
 
@@ -36,6 +35,5 @@ id int auto_increment,
 itemID int (255) NOT NULL,
 OrdersID int (255) NOT NULL,
 PRIMARY KEY (id)
-
 );
 
